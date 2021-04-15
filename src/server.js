@@ -8,6 +8,7 @@ const accounts = require('./app/models/user.models');
 const auth = require('./router/auth.router');
 const googleAuth = require('./router/auth.goolge');
 const facebookAuth = require('./router/auth.facebook');
+const homeRouter = require('./router/home.router');
 require('./config/auth.google');
 require('./config/auth.facebook');
 
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/login', auth);
 app.use('/auth/google', googleAuth);
 app.use('/auth/facebook', facebookAuth);
+app.use('/home', homeRouter);
 const port = 3000;
 
 app.get('/', (req, res, next) => {
@@ -35,6 +37,10 @@ app.get('/', (req, res, next) => {
             throw Error(error);
         })
     res.render('login');
+});
+
+app.get('/home', (req, res, next) => {
+    // res.render('home');
 })
 app.listen(port, () => {
     console.log(`app is running at port ${port}`);

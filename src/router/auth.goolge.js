@@ -7,7 +7,7 @@ router.get('/',
 router.get('/callback',
     passport.authenticate('google', { failureRedirect: '/login' }),
     function(req, res) {
-        res.send('it ok');
+        res.render('home');
     });
 
 module.exports = router;

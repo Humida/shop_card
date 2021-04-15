@@ -7,7 +7,8 @@ module.exports = {
             })
             .then((a) => {
                 if (a) {
-                    res.send('da dang nhap');
+
+                    res.redirect('/home');
                 } else {
                     res.send('dang nhap that bai');
                 }
